@@ -48,7 +48,7 @@ function App() {
               {tasks.map((task, index) => {
                   return(
                     <div key={index} className='flex flex-between items-center space-x-3 text-sm md:text-md lg:text-lg xl:text-xl m-1 md:m-2 lg:m-3 p-2 md:p-4 md:pr-24 rounded-md border-2 border-slate-300'>
-                      <input type='checkbox' className='h-4 w-4'></input>
+                      <input type='checkbox' className='h-4 w-4' defaultChecked={task.state}></input>
                       <p>{task.name}</p>
                   </div>
                   )
