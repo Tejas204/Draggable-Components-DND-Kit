@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 
 import { DndContext, closestCorners } from '@dnd-kit/core';
-import Tasks from './components/Tasks';
+import Column from './components/Column';
 
 function App() {
 
@@ -17,7 +17,7 @@ function App() {
 
       {/* Establish DND context */}
       <DndContext collisionDetection={closestCorners}>
-          <Tasks></Tasks>
+          <Column></Column>
       </DndContext>
     </div>
   );
