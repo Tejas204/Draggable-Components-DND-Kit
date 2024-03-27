@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { DndContext, closestCorners } from '@dnd-kit/core';
 import Column from './components/Column';
 import { taskArray } from './data/data';
+import { arrayMove } from '@dnd-kit/sortable';
 
 function App() {
 
@@ -31,6 +32,27 @@ function App() {
     setTasks([...tasks, taskObject]);
 }
 
+  // Function: get task index
+  const getTaskIndex = (id) => {
+    return tasks.findIndex(task => task.id === id);
+  }
+
+  // Function: handle drag event
+  const handleDragEnd = (e) => {
+    const {active, over} = e;
+
+    if(active.id === over.id) return;
+
+
+    setTasks((tasks) => {
+      const originalPos = getTaskIndex(active.id);
+      const newPos = getTaskIndex(over.id);
+
+      console.log(arrayMove(tasks, 1, 2));
+      return arrayMove(tasks, originalPos, newPos);
+    });
+  };
+
 
   return (
     <div className='text-center items-center flex flex-col'>
@@ -45,7 +67,7 @@ function App() {
       </div>
 
       {/* Establish DND context */}
-      <DndContext collisionDetection={closestCorners}>
+      <DndContext onDragEnd={handleDragEnd} collisionDetection={closestCorners}>
           <Column tasks={tasks}></Column>
       </DndContext>
     </div>
