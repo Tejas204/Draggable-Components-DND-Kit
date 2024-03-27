@@ -9,11 +9,11 @@ const Task = ({id, name, state}) => {
 
   const style = {
     transition,
-    transform: CSS.Transform.toString,
+    transform: CSS.Transform.toString(transform)
   };
 
   return (
-    <div className='flex flex-between items-center space-x-3 text-sm md:text-md lg:text-lg xl:text-xl m-1 md:m-2 lg:m-3 p-2 md:p-4 md:pr-24 rounded-md border-2 border-slate-300'
+    <div className='flex flex-between items-center space-x-3 text-sm md:text-md lg:text-lg xl:text-xl m-1 md:m-2 lg:m-3 p-2 md:p-4 md:pr-24 rounded-md border-2 border-slate-300 touch-none'
         ref={setNodeRef}
         {...attributes}
         {...listeners}
